@@ -21,14 +21,13 @@ export class Character {
     ) {
         this.cursors = this.game.input.keyboard.createCursorKeys();
 
-        this.sprite = this.game.add.sprite(0, this.game.height, "runner");
+        this.sprite = this.game.add.sprite(20, 20, "runner");
         this.physics.arcade.enable(this.sprite);
         this.sprite.anchor.setTo(0.1, 0.1);
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.setSize(50, 50, 0, 0);
         this.sprite.body.velocity.x = 0;
         this.cursors.up.onDown.add( () => {this.jump()});
-
 
         this.sprite.animations.add('left', [0, 1, 2], 10, true);
         this.sprite.animations.add('flyleft', [0], 10, true);
@@ -37,10 +36,16 @@ export class Character {
         this.sprite.animations.add('flyright', [5], 10, true);
         this.sprite.animations.add('standright', [3], 10, true);
 
-        this.sprite.play('standright');
+        this.sprite.play('flyright');
     }
 
     update() {
+        if(this.sprite.body.onFloor() || this.sprite.body.onCeiling()){
+            this.game.paused = true;
+            this.game.add.text(100, 100, "You are dead!", {});
+        }
+
+
         if(this.inAir && (this.sprite.body.touching.down || this.sprite.body.blocked.down)) {
             this.inAir = false;
             this.doubleJumped = false;
