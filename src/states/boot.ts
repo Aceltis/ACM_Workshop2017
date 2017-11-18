@@ -29,6 +29,9 @@ export class BootState extends Phaser.State {
 
     this.load.image('ground', './assets/images/cloud.png');
     this.load.image('background', 'assets/images/sky.png');
+    this.load.image('snowflake', 'assets/images/snowflake.png');
+    this.load.spritesheet('snowflakes', 'assets/images/snowflakes.png',17,17);
+    this.load.spritesheet('snowflakes_large', 'assets/images/snowflakes_large.png',64,64);
   }
 
   render () {
