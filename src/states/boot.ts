@@ -27,7 +27,7 @@ export class BootState extends Phaser.State {
     );
     text.anchor.setTo(0.5, 0.5);
 
-    this.load.image('ground', './assets/images/ground.png');
+    this.load.image('ground', './assets/images/cloud.png');
     this.load.image('background', 'assets/images/sky.png');
   }
 
