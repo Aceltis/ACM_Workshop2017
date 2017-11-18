@@ -17,13 +17,17 @@ export class Level {
   }
 
   createPlatform(x : number, y : number) {
-    let platform = new Platform(this.game, this.groundPhysicsGroup, x, y, 100, 50, "ground");
+
+    let minWidth = 45 * 3;
+    let maxWidth = 45 * 6;
+
+    let width = minWidth + (maxWidth - minWidth) * Math.random();
+    let platform = new Platform(this.game, this.groundPhysicsGroup, x, y, width, 45, "ground");
     this.platforms.push(platform)
   }
 
   spawnPlatforms() {
     this.time += this.game.time.elapsed;
-
 
     if( this.time > 3000 ) {
       this.createPlatform(this.game.width, 300 + Math.random() * 200);
