@@ -16,8 +16,7 @@ export class Character {
         public game: Phaser.Game,
         public physics: Phaser.Physics,
         public x: number,
-        public y: number,
-        public assetUrl: string
+        public y: number
     ) {
         this.cursors = this.game.input.keyboard.createCursorKeys();
 

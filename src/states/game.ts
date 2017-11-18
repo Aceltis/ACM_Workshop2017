@@ -10,13 +10,16 @@ export class GameState extends Phaser.State {
   preload () {}
 
   create () {
-    let banner = this.add.text(0, 0, "Let's make a game!", {});
+    let background = this.add.tileSprite(0, 0, 1024, 576, 'background');
+    background.fixedToCamera = true;
+    let banner = this.add.text(350, 20, "You must survive!", {});
     banner.font = 'Nunito';
     banner.fontSize = 40;
-    banner.fill = '#77BFA3';
+    banner.fill = '#ffffff';
+    banner.align = "center";
     banner.anchor.setTo(0, 0);
 
-    this.character = new Character(this.game, this.physics, 0, 0, "abc");
+    this.character = new Character(this.game, this.physics, 0, 0);
     this.level = new Level(this.game, this.character);
     this.level.createPlatform(300, 500);
     this.level.createPlatform(600, 440);
