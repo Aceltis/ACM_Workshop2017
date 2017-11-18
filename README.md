@@ -11,3 +11,8 @@
 * Start the dev server with `npm run dev`
 * Open your browser and go to http://localhost:9000/
 
+## PhaserJs documentation
+https://phaser.io/docs/2.6.2/index
+
+## TypeScript documentation
+https://www.typescriptlang.org/docs/handbook/basic-types.html
