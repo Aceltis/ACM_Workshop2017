@@ -25,6 +25,6 @@ export class Platform {
       return (this.sprite.body.x + this.w <= 0);
   }
 
-  update () : boolean {
+  update () {
   }
 }
