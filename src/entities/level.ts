@@ -32,7 +32,6 @@ export class Level {
     if( this.time > 3000 ) {
       this.createPlatform(this.game.width, 300 + Math.random() * 200);
       this.time = 0;
-      console.log("spawn platform");
     }
 
 
