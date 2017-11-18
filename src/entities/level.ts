@@ -10,6 +10,9 @@ export class Level {
   time : number = 0;
   snowEffect : SnowEffect;
 
+  lastPlatform : Platform;
+  tileSize : number = 45;
+
   constructor (
     public game : Phaser.Game,
     public character : Character
@@ -17,23 +20,29 @@ export class Level {
     // Load sprite
     this.groundPhysicsGroup = this.game.add.physicsGroup();
     this.snowEffect = new SnowEffect(this.game)
+    this.createPlatform(this.tileSize, this.game.height - 90, this.tileSize * 10);
   }
 
-  createPlatform(x : number, y : number) {
+  createPlatform(x : number, y : number, w?: number) {
 
-    let minWidth = 45 * 3;
-    let maxWidth = 45 * 6;
+    let minWidth = this.tileSize * 3;
+    let maxWidth = this.tileSize * 6;
 
     let width = minWidth + (maxWidth - minWidth) * Math.random();
-    let platform = new Platform(this.game, this.groundPhysicsGroup, x, y, width, 45, "ground");
+    if(w) {
+      width = w;
+    }
+    let platform = new Platform(this.game, this.groundPhysicsGroup, x, y, width, this.tileSize, "ground");
     this.platforms.push(platform)
+    return platform;
   }
 
   spawnPlatforms() {
     this.time += this.game.time.elapsed;
 
-    if( this.time > 3000 ) {
-      this.createPlatform(this.game.width, 300 + Math.random() * 200);
+
+    if( this.time > 3100 || this.lastPlatform == null ) {
+      this.lastPlatform = this.createPlatform(this.game.width, 100 + Math.random() * this.tileSize * Math.floor(this.game.height / this.tileSize));
       this.time = 0;
     }
 

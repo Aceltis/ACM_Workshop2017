@@ -27,10 +27,8 @@ export class GameState extends Phaser.State {
     this.timer.align = "center";
     this.timer.anchor.setTo(0, 0);
 
-    this.character = new Character(this.game, this.physics, 0, 0);
+    this.character = new Character(this.game, this.physics, 45, this.game.height - (45*3) -2);
     this.level = new Level(this.game, this.character);
-    this.level.createPlatform(300, 500);
-    this.level.createPlatform(600, 440);
 }
 
   render () {}

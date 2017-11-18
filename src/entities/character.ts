@@ -22,7 +22,7 @@ export class Character {
     ) {
         this.cursors = this.game.input.keyboard.createCursorKeys();
 
-        this.sprite = this.game.add.sprite(20, 20, "runner");
+        this.sprite = this.game.add.sprite(x, y, "runner");
         this.physics.arcade.enable(this.sprite);
         this.sprite.anchor.setTo(0.1, 0.1);
         this.sprite.body.collideWorldBounds = true;
