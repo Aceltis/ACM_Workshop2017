@@ -18,7 +18,7 @@ export class Platform {
     this.sprite = this.game.add.tileSprite(x, y, w, h, assetID);
     this.physicsGroup.add(this.sprite);
     this.sprite.body.allowGravity = false;
-    this.sprite.body.immovable = this.falling;
+    this.sprite.body.immovable = false; //this.falling;
     this.sprite.body.velocity.x = -(this.speed);
     //this.sprite.body.friction.x = 0;
     //this.sprite.body.friction.y = 0;
@@ -34,6 +34,15 @@ export class Platform {
       this.sprite.destroy();
       return false;
     }
+
+    if (this.sprite.body.velocity.y < 0) {
+      this.sprite.body.velocity.y = 0;
+    }
+    if (this.sprite.body.velocity.y > 100) {
+      this.sprite.body.velocity.y = 100;
+    }
+    this.sprite.body.velocity.x = -(this.speed);
+
     return true;
   }
 }
