@@ -17,18 +17,21 @@ export class Level {
   }
 
   createPlatform(x : number, y : number) {
-    let platform = new Platform(this.game, this.groundPhysicsGroup, x, y, 100, 50, "ground");
+
+    let minWidth = 45 * 3;
+    let maxWidth = 45 * 6;
+
+    let width = minWidth + (maxWidth - minWidth) * Math.random();
+    let platform = new Platform(this.game, this.groundPhysicsGroup, x, y, width, 45, "ground");
     this.platforms.push(platform)
   }
 
   spawnPlatforms() {
     this.time += this.game.time.elapsed;
 
-
     if( this.time > 3000 ) {
       this.createPlatform(this.game.width, 300 + Math.random() * 200);
       this.time = 0;
-      console.log("spawn platform");
     }
 
 
@@ -39,7 +42,7 @@ export class Level {
     this.game.physics.arcade.collide(this.character.sprite, this.groundPhysicsGroup);
     this.game.physics.arcade.collide(this.groundPhysicsGroup, this.character.sprite);
     this.character.update();
-    this.platforms.forEach(platform => platform.update());
+    this.platforms = this.platforms.filter(platform => platform.update());
 
     this.spawnPlatforms();
 
