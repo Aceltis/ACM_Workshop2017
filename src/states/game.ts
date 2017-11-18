@@ -19,7 +19,7 @@ export class GameState extends Phaser.State {
     this.banner.font = 'Nunito';
     this.banner.fontSize = 40;
     this.banner.fill = '#ffffff';
-    this.banner.align = "center";
+    this.banner.align = "center";45
     this.banner.anchor.setTo(0, 0);
     this.timer.font = 'Nunito';
     this.timer.fontSize = 40;
@@ -27,7 +27,7 @@ export class GameState extends Phaser.State {
     this.timer.align = "center";
     this.timer.anchor.setTo(0, 0);
 
-    this.character = new Character(this.game, this.physics, 45, this.game.height - (45*3) -2);
+    this.character = new Character(this.game, this.physics, 45, 45);
     this.level = new Level(this.game, this.character);
 }
 

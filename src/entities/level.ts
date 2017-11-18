@@ -20,7 +20,7 @@ export class Level {
     // Load sprite
     this.groundPhysicsGroup = this.game.add.physicsGroup();
     this.snowEffect = new SnowEffect(this.game)
-    this.createPlatform(this.tileSize, this.game.height - 90, this.tileSize * 10);
+    this.createPlatform(this.game.width / 2, this.game.height - 90, this.tileSize * 10);
   }
 
   createPlatform(x : number, y : number, w?: number) {
@@ -32,7 +32,10 @@ export class Level {
     if(w) {
       width = w;
     }
-    let platform = new Platform(this.game, this.groundPhysicsGroup, x, y, width, this.tileSize, "ground");
+
+    let fall = (Math.random() < 0.2)
+
+    let platform = new Platform(this.game, this.groundPhysicsGroup, x, y, width, this.tileSize, "ground", fall);
     this.platforms.push(platform)
     return platform;
   }

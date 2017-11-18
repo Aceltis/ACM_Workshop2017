@@ -9,7 +9,7 @@ export class Character {
 
     private accSpeed: number = 20;
     private deAccSpeed: number = 40;
-    private maxSpeed: number = 600;
+    private maxSpeed: number = 700;
     private jumpHeight: number = 600;
 
     public isDead: boolean = false;
