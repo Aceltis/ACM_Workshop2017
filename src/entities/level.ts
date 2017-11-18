@@ -41,8 +41,7 @@ export class Level {
     this.time += this.game.time.elapsed;
 
 
-
-    if( this.time > 3100 || this.lastPlatform == null ) {
+    if( this.time > 2200 || this.lastPlatform == null ) {
        const randomY = Math.max(this.tileSize * 2, Math.random() * (this.game.height - this.tileSize));
 
       this.lastPlatform = this.createPlatform(this.game.width, randomY);

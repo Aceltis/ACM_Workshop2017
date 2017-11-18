@@ -2,7 +2,7 @@ import {GameState} from "../states/game";
 
 export class Platform {
   sprite: Phaser.TileSprite;
-  speed : number = 80;
+  speed : number = 300;
 
   constructor (
     public game: Phaser.Game,
@@ -18,9 +18,10 @@ export class Platform {
     this.physicsGroup.add(this.sprite);
     this.sprite.body.allowGravity = false;
     this.sprite.body.immovable = true;
-    this.sprite.body.velocity.x = -this.speed;
+    this.sprite.body.velocity.x = -(this.speed);
     this.sprite.body.friction.x = 0;
     this.sprite.body.friction.y = 0;
+
   }
 
   isDead() {
