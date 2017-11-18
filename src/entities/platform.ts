@@ -12,13 +12,12 @@ export class Platform {
     public w: number,
     public h: number,
     public assetID: string,
-    public falling: boolean
   ) {
     // Load sprite
     this.sprite = this.game.add.tileSprite(x, y, w, h, assetID);
     this.physicsGroup.add(this.sprite);
     this.sprite.body.allowGravity = false;
-    this.sprite.body.immovable = this.falling;
+    this.sprite.body.immovable = true;
     this.sprite.body.velocity.x = -(this.speed);
     //this.sprite.body.friction.x = 0;
     //this.sprite.body.friction.y = 0;
