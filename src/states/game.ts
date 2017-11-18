@@ -35,6 +35,8 @@ export class GameState extends Phaser.State {
     this.soundtrack.volume = 0.1;
 
     this.soundtrack.play();
+
+    this.time.reset();
 }
 
   render () {}
