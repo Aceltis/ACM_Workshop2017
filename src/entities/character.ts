@@ -120,7 +120,7 @@ export class Character {
                 this.doubleJumped = true;
             }
             let sound = this.jumpSounds[Math.floor(Math.random() * (this.jumpSounds.length - 1))];
-            sound.volume = 0.5;
+            sound.volume = 0.6;
             sound.play();
 
             this.inAir = true;
