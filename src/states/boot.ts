@@ -7,7 +7,7 @@ export class BootState extends Phaser.State {
 
   init () {
     this.physics.startSystem(Phaser.Physics.ARCADE);
-    this.physics.arcade.gravity.y = -100;
+    this.physics.arcade.gravity.y = 1000;
     this.stage.backgroundColor = '#EDEEC9';
     this.fontsLoaded = () => { this.fontsReady = true; }
   }
