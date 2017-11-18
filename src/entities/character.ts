@@ -14,6 +14,8 @@ export class Character {
 
     public isDead: boolean = false;
 
+    private jumpSounds: any[];
+
     constructor (
         public game: Phaser.Game,
         public physics: Phaser.Physics,
@@ -38,6 +40,13 @@ export class Character {
         this.sprite.animations.add('standright', [3], 10, true);
 
         this.sprite.play('flyright');
+
+        this.jumpSounds = [
+            this.game.add.audio("jump1"),
+            this.game.add.audio("jump2"),
+            this.game.add.audio("jump3"),
+            this.game.add.audio("jump4")
+        ];
     }
 
     update() {
@@ -110,6 +119,10 @@ export class Character {
             if(this.inAir){
                 this.doubleJumped = true;
             }
+            let sound = this.jumpSounds[Math.floor(Math.random() * (this.jumpSounds.length - 1))];
+            sound.volume = 0.5;
+            sound.play();
+
             this.inAir = true;
             this.sprite.body.velocity.y = -1 * this.jumpHeight;
         }

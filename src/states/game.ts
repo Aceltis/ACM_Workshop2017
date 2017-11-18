@@ -7,6 +7,7 @@ export class GameState extends Phaser.State {
   level : Level;
   timer: Phaser.Text;
   banner: Phaser.Text;
+  soundtrack: any;
 
   init () {}
   preload () {}
@@ -29,6 +30,11 @@ export class GameState extends Phaser.State {
 
     this.character = new Character(this.game, this.physics, 45, 45);
     this.level = new Level(this.game, this.character);
+
+    this.soundtrack = this.game.add.audio("soundtrack");
+    this.soundtrack.volume = 0.1;
+
+    this.soundtrack.play();
 }
 
   render () {}
@@ -41,5 +47,4 @@ export class GameState extends Phaser.State {
         this.banner.fill = '#b70000';
     }
   }
-
 }
