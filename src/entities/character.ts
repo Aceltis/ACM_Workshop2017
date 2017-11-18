@@ -25,7 +25,14 @@ export class Character {
 
     }
 
-    update () {
+    preRender() {
+    }
+
+    update() {
+        if(this.inAir && (this.sprite.body.touching.down || this.sprite.body.blocked.down)) {
+            this.inAir = false;
+        }
+
         if (this.cursors.left.isDown){
             if(this.sprite.body.velocity.x > (this.maxSpeed * -1)){
                 this.sprite.body.velocity.x -= 20;
@@ -36,12 +43,12 @@ export class Character {
                 this.sprite.body.velocity.x += 20;
             }
         }
-        else if (this.cursors.up.isDown){
-            this.sprite.body.velocity.y -= 50;
-            // if(!this.inAir){
-            //     this.inAir = true;
-            //
-            // }
+
+        if (this.cursors.up.isDown){
+            if(!this.inAir){
+                this.inAir = true;
+                this.sprite.body.velocity.y = -400;
+            }
         }
     }
 }
