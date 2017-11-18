@@ -1,4 +1,5 @@
 import {Character} from "../entities/character";
+import {Platform} from "../entities/platform";
 
 export class GameState extends Phaser.State {
   character: Character;
@@ -13,6 +14,7 @@ export class GameState extends Phaser.State {
     banner.fill = '#77BFA3';
     banner.anchor.setTo(0, 0);
 
+    let testPlatform = new Platform(this, 100, 100, 100, 50, "ground");
     this.character = new Character(this.game, this.physics, 0, 0, "abc");
 
 }
