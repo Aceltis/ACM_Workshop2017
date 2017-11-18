@@ -2,6 +2,9 @@ export class SplashState extends Phaser.State {
   loaderBg: Phaser.Sprite;
   loaderBar: Phaser.Sprite;
 
+  cursors: Phaser.CursorKeys;
+  banner: Phaser.Text;
+
   init () {}
 
   preload () {
@@ -13,9 +16,17 @@ export class SplashState extends Phaser.State {
     // load your assets
     //
     this.load.spritesheet('runner', './assets/images/runner_spritesheet.png', 50, 50);
+
   }
 
   create () {
-    this.game.state.start('Game');
+
+    let background = this.add.tileSprite(0, 0, 1024, 576, 'background');
+    background.fixedToCamera = true;
+    this.banner = this.add.text(350, this.game.height / 2, "Press UP to play!", {});
+    this.cursors = this.game.input.keyboard.createCursorKeys();
+    // this.game.state.start('Game');
+
+    this.cursors.up.onDown.add( () => { this.game.state.start('Game'); });
   }
 }
