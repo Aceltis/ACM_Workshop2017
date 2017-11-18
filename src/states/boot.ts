@@ -38,6 +38,7 @@ export class BootState extends Phaser.State {
     this.load.audio("jump3", "assets/sounds/jump3.wav");
     this.load.audio("jump4", "assets/sounds/jump4.wav");
     this.load.audio("soundtrack", "assets/sounds/epic_soundtrack.mp3");
+
   }
 
   render () {

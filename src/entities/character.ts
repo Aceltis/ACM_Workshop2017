@@ -53,7 +53,6 @@ export class Character {
         if(this.sprite.body.onFloor() || this.sprite.body.onCeiling()){
           this.game.paused = true;
           this.isDead = true;
-          setTimeout( () => window.location.reload(true), 2000);
         }
 
 

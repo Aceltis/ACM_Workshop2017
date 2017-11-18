@@ -33,6 +33,11 @@ export class SplashState extends Phaser.State {
     this.banner.fontSize = 20;
     this.banner.fill = '#ffffff';
     this.banner.align = "center";
+
+    let soundtrack = this.game.add.audio("soundtrack");
+    soundtrack.volume = 0.1;
+    soundtrack.play();
+
     this.cursors = this.game.input.keyboard.createCursorKeys();
     // this.game.state.start('Game');
 

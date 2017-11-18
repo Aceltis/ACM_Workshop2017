@@ -31,11 +31,6 @@ export class GameState extends Phaser.State {
     this.character = new Character(this.game, this.physics, 45, 45);
     this.level = new Level(this.game, this.character);
 
-    this.soundtrack = this.game.add.audio("soundtrack");
-    this.soundtrack.volume = 0.1;
-
-    this.soundtrack.play();
-
     this.time.reset();
 }
 
@@ -45,8 +40,13 @@ export class GameState extends Phaser.State {
     this.timer.setText(this.time.totalElapsedSeconds().toFixed(2).toString());
     this.level.update();
     if(this.character.isDead){
-        this.banner.setText("You died.");
+        this.banner.setText("You died. Press 'up' to try again.");
         this.banner.fill = '#b70000';
+        let cursors = this.game.input.keyboard.createCursorKeys();
+        cursors.up.onDown.add( () => {
+            this.game.state.restart();
+            this.game.paused = false;
+        });
     }
   }
 }
