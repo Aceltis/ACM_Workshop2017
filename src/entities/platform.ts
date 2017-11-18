@@ -19,6 +19,8 @@ export class Platform {
     this.sprite.body.allowGravity = false;
     this.sprite.body.immovable = true;
     this.sprite.body.velocity.x = -this.speed;
+    this.sprite.body.friction.x = 0;
+    this.sprite.body.friction.y = 0;
   }
 
   isDead() {
