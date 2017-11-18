@@ -1,6 +1,6 @@
 export class Character {
 
-    private sprite: Phaser.Sprite;
+    public sprite: Phaser.Sprite;
     private cursors: Phaser.CursorKeys;
 
     private maxSpeed: number = 400;
