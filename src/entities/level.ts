@@ -43,7 +43,7 @@ export class Level {
     this.game.physics.arcade.collide(this.character.sprite, this.groundPhysicsGroup);
     this.game.physics.arcade.collide(this.groundPhysicsGroup, this.character.sprite);
     this.character.update();
-    this.platforms.forEach(platform => platform.update());
+    this.platforms = this.platforms.filter(platform => platform.update());
 
     this.spawnPlatforms();
 

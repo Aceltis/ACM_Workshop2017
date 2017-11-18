@@ -26,6 +26,10 @@ export class Platform {
   }
 
   update () {
-
+    if (this.isDead()) {
+      this.sprite.destroy();
+      return false;
+    }
+    return true;
   }
 }
