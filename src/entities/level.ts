@@ -33,7 +33,9 @@ export class Level {
       width = w;
     }
 
-    let platform = new Platform(this.game, this.groundPhysicsGroup, x, y, width, this.tileSize, "ground");
+    let fall = (Math.random() > 0.2)
+
+    let platform = new Platform(this.game, this.groundPhysicsGroup, x, y, width, this.tileSize, "ground", fall);
     this.platforms.push(platform)
     return platform;
   }
