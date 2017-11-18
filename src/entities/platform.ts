@@ -2,6 +2,8 @@ import {GameState} from "../states/game";
 
 export class Platform {
   sprite: Phaser.TileSprite;
+  speed : number = 80;
+
   constructor (
     public game: Phaser.Game,
     public physicsGroup : Phaser.Group,
@@ -16,9 +18,9 @@ export class Platform {
     this.physicsGroup.add(this.sprite);
     this.sprite.body.allowGravity = false;
     this.sprite.body.immovable = true;
+    this.sprite.body.velocity.x = -this.speed;
   }
 
   update () {
-    // Happens every frame
   }
 }

@@ -18,8 +18,8 @@ export class GameState extends Phaser.State {
 
     this.character = new Character(this.game, this.physics, 0, 0, "abc");
     this.level = new Level(this.game, this.character);
-    this.level.createPlatform();
-
+    this.level.createPlatform(300, 500);
+    this.level.createPlatform(600, 440);
 }
 
   render () {}
