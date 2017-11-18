@@ -1,4 +1,8 @@
+import {Character} from "../entities/character";
+
 export class GameState extends Phaser.State {
+  character: Character;
+
   init () {}
   preload () {}
 
