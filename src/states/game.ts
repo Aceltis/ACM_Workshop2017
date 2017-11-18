@@ -13,9 +13,13 @@ export class GameState extends Phaser.State {
     banner.fill = '#77BFA3';
     banner.anchor.setTo(0, 0);
 
-    let mushroom = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, "mushroom");
-    mushroom.anchor.setTo(0.5, 0.5);
-  }
+    this.character = new Character(this.game, this.physics, 0, 0, "abc");
+
+}
 
   render () {}
+
+  update() {
+      this.character.update();
+  }
 }
