@@ -16,16 +16,16 @@ export class GameState extends Phaser.State {
     banner.fill = '#77BFA3';
     banner.anchor.setTo(0, 0);
 
-    this.level = new Level(this.game);
-    this.level.createPlatform();
     this.character = new Character(this.game, this.physics, 0, 0, "abc");
+    this.level = new Level(this.game, this.character);
+    this.level.createPlatform();
 
 }
 
   render () {}
 
   update() {
-      this.character.update();
+    this.level.update();
   }
 
   preRender () {
