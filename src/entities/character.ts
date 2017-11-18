@@ -26,15 +26,13 @@ export class Character {
         this.sprite.body.collideWorldBounds = true;
         this.sprite.body.setSize(64, 64, 0, 0);
         this.sprite.body.velocity.x = 0;
-
-    }
-
-    preRender() {
+        this.cursors.up.onDown.add( () => {this.jump()});
     }
 
     update() {
         if(this.inAir && (this.sprite.body.touching.down || this.sprite.body.blocked.down)) {
             this.inAir = false;
+            this.doubleJumped = false;
         }
 
         let speed = this.accSpeed;
@@ -50,15 +48,15 @@ export class Character {
                 this.sprite.body.velocity.x += speed;
             }
         }
+    }
 
-        if (this.cursors.up.isDown){
-            if(!this.inAir || !this.doubleJumped){
-                if(this.inAir){
-                    this.doubleJumped = true;
-                }
-                this.inAir = true;
-                this.sprite.body.velocity.y = -1 * this.jumpHeight;
+    jump() {
+        if(!this.inAir || !this.doubleJumped){
+            if(this.inAir){
+                this.doubleJumped = true;
             }
+            this.inAir = true;
+            this.sprite.body.velocity.y = -1 * this.jumpHeight;
         }
     }
 }

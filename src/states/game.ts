@@ -28,7 +28,4 @@ export class GameState extends Phaser.State {
     this.level.update();
   }
 
-  preRender () {
-      this.character.preRender();
-  }
 }
