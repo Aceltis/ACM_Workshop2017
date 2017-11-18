@@ -3,11 +3,11 @@ import * as WebFontLoader from 'webfontloader';
 export class BootState extends Phaser.State {
   stage: Phaser.Stage;
   fontsReady: boolean;
+  fontsLoaded: () => void;
 
   init () {
     this.stage.backgroundColor = '#EDEEC9';
-    this.fontsReady = false;
-    this.fontsLoaded = this.fontsLoaded.bind(this);
+    this.fontsLoaded = () => { this.fontsReady = true; }
   }
 
   preload () {
@@ -34,9 +34,5 @@ export class BootState extends Phaser.State {
     if (this.fontsReady) {
       this.game.state.start('Splash');
     }
-  }
-
-  fontsLoaded () {
-    this.fontsReady = true;
   }
 }
