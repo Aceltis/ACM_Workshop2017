@@ -21,6 +21,10 @@ export class Platform {
     this.sprite.body.velocity.x = -this.speed;
   }
 
-  update () {
+  isDead() {
+      return (this.sprite.body.x + this.w <= 0);
+  }
+
+  update () : boolean {
   }
 }
