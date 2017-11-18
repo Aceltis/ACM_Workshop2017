@@ -8,9 +8,11 @@ export class Character {
     private inJumpMaxSpeed: number;
 
     private accSpeed: number = 20;
-    private deAccSpeed: number = 60;
+    private deAccSpeed: number = 40;
     private maxSpeed: number = 600;
     private jumpHeight: number = 600;
+
+    public isDead: boolean = false;
 
     constructor (
         public game: Phaser.Game,
@@ -41,7 +43,7 @@ export class Character {
     update() {
         if(this.sprite.body.onFloor() || this.sprite.body.onCeiling()){
             this.game.paused = true;
-            this.game.add.text(100, 100, "You are dead!", {});
+            this.isDead = true;
         }
 
 

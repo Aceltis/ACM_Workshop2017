@@ -6,6 +6,7 @@ export class GameState extends Phaser.State {
   character: Character;
   level : Level;
   timer: Phaser.Text;
+  banner: Phaser.Text;
 
   init () {}
   preload () {}
@@ -13,13 +14,18 @@ export class GameState extends Phaser.State {
   create () {
     let background = this.add.tileSprite(0, 0, 1024, 576, 'background');
     background.fixedToCamera = true;
-    let banner = this.add.text(350, 20, "You must survive!", {});
+    this.banner = this.add.text(350, 20, "You must survive!", {});
     this.timer = this.add.text(70, 20, "0", {});
-    banner.font = 'Nunito';
-    banner.fontSize = 40;
-    banner.fill = '#ffffff';
-    banner.align = "center";
-    banner.anchor.setTo(0, 0);
+    this.banner.font = 'Nunito';
+    this.banner.fontSize = 40;
+    this.banner.fill = '#ffffff';
+    this.banner.align = "center";
+    this.banner.anchor.setTo(0, 0);
+    this.timer.font = 'Nunito';
+    this.timer.fontSize = 40;
+    this.timer.fill = '#ffffff';
+    this.timer.align = "center";
+    this.timer.anchor.setTo(0, 0);
 
     this.character = new Character(this.game, this.physics, 0, 0);
     this.level = new Level(this.game, this.character);
@@ -32,6 +38,10 @@ export class GameState extends Phaser.State {
   update() {
     this.timer.setText(this.time.totalElapsedSeconds().toFixed(2).toString());
     this.level.update();
+    if(this.character.isDead){
+        this.banner.setText("You died.");
+        this.banner.fill = '#b70000';
+    }
   }
 
 }
