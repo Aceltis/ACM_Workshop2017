@@ -21,13 +21,23 @@ export class Character {
     ) {
         this.cursors = this.game.input.keyboard.createCursorKeys();
 
-        this.sprite = this.game.add.sprite(0, this.game.height, "mushroom");
+        this.sprite = this.game.add.sprite(0, this.game.height, "runner");
         this.physics.arcade.enable(this.sprite);
         this.sprite.anchor.setTo(0.1, 0.1);
         this.sprite.body.collideWorldBounds = true;
-        this.sprite.body.setSize(64, 64, 0, 0);
+        this.sprite.body.setSize(50, 50, 0, 0);
         this.sprite.body.velocity.x = 0;
         this.cursors.up.onDown.add( () => {this.jump()});
+
+
+        this.sprite.animations.add('left', [0, 1, 2], 10, true);
+        this.sprite.animations.add('flyleft', [0], 10, true);
+        this.sprite.animations.add('standleft', [2], 10, true);
+        this.sprite.animations.add('right', [3, 4, 5], 10, true);
+        this.sprite.animations.add('flyright', [5], 10, true);
+        this.sprite.animations.add('standright', [3], 10, true);
+
+        this.sprite.play('standright');
     }
 
     update() {
@@ -46,15 +56,45 @@ export class Character {
             if(this.sprite.body.velocity.x > (maxSpeed * -1)){
                 this.sprite.body.velocity.x -= speed;
             }
+            if(this.inAir){
+                this.sprite.play('flyleft');
+            }
+            else {
+                this.sprite.play('left');
+            }
         }
         else if (this.cursors.right.isDown){
             if(this.sprite.body.velocity.x < 0) speed = this.deAccSpeed;
             if(this.sprite.body.velocity.x < maxSpeed){
                 this.sprite.body.velocity.x += speed;
             }
+            if(this.inAir){
+                this.sprite.play('flyright');
+            }
+            else {
+                this.sprite.play('right');
+            }
         }
         else {
             this.sprite.body.velocity.x -= (this.sprite.body.velocity.x * 0.05)
+            if(this.sprite.body.velocity.x > 0 && this.sprite.body.velocity.x < 40){
+                if(this.inAir){
+                    this.sprite.play('flyright');
+                }
+                else{
+                    this.sprite.play('standright');
+                }
+                this.sprite.body.velocity.x = 0;
+            }
+            else if(this.sprite.body.velocity.x < 0 && this.sprite.body.velocity.x >= -40){
+                if(this.inAir){
+                    this.sprite.play('flyleft');
+                }
+                else{
+                    this.sprite.play('standleft');
+                }
+                this.sprite.body.velocity.x = 0;
+            }
         }
     }
 

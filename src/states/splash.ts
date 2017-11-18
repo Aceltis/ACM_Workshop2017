@@ -12,7 +12,7 @@ export class SplashState extends Phaser.State {
     //
     // load your assets
     //
-    this.load.image('mushroom', './assets/images/mushroom2.png');
+    this.load.spritesheet('runner', './assets/images/runner_spritesheet.png', 50, 50);
   }
 
   create () {
