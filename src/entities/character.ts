@@ -5,6 +5,7 @@ export class Character {
 
     private inAir: boolean = false;
     private doubleJumped: boolean = false;
+    private inJumpMaxSpeed: number;
 
     private accSpeed: number = 20;
     private deAccSpeed: number = 60;
@@ -36,21 +37,29 @@ export class Character {
         }
 
         let speed = this.accSpeed;
+        let maxSpeed  = this.maxSpeed;
+        if(this.inAir){
+            maxSpeed = this.inJumpMaxSpeed;
+        }
         if (this.cursors.left.isDown){
             if(this.sprite.body.velocity.x > 0) speed = this.deAccSpeed;
-            if(this.sprite.body.velocity.x > (this.maxSpeed * -1)){
+            if(this.sprite.body.velocity.x > (maxSpeed * -1)){
                 this.sprite.body.velocity.x -= speed;
             }
         }
         else if (this.cursors.right.isDown){
             if(this.sprite.body.velocity.x < 0) speed = this.deAccSpeed;
-            if(this.sprite.body.velocity.x < this.maxSpeed){
+            if(this.sprite.body.velocity.x < maxSpeed){
                 this.sprite.body.velocity.x += speed;
             }
+        }
+        else {
+            this.sprite.body.velocity.x -= (this.sprite.body.velocity.x * 0.05)
         }
     }
 
     jump() {
+        this.inJumpMaxSpeed = Math.abs(this.sprite.body.velocity.x) + 50
         if(!this.inAir || !this.doubleJumped){
             if(this.inAir){
                 this.doubleJumped = true;
