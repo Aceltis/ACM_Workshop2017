@@ -23,7 +23,7 @@ export class Level {
     // Load sprite
     this.groundPhysicsGroup = this.game.add.physicsGroup();
     this.snowEffect = new SnowEffect(this.game)
-    this.createPlatform(this.game.width / 2, this.game.height - 90, this.tileSize * 10);
+    this.createPlatform(this.game.width / 3, this.game.height - 90, this.tileSize * 10);
     this.heightOfPreviousPlatform = this.game.height - this.tileSize;
   }
 
