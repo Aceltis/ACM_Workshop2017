@@ -1,4 +1,7 @@
-# ACM_Workshop2017
+# ACM Workshop2017 - You Must Survive
+
+![You Must Survive Screenshoot](you-must-survive-screenshoot.png)
+
 
 ## Getting Started
 * Download and install nodeJs with npm: https://nodejs.org/en/download/
